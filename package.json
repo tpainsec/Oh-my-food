@@ -1,0 +1,11 @@
+{
+  "name": "p3_painsec_tristan",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --watch ./sass/main.scss:public/css/styles.css ./sass/menu1.scss:public/css/menu1.css ./sass/menu2.scss:public/css/menu2.css ./sass/menu3.scss:public/css/menu3.css ./sass/menu4.scss:public/css/menu4.css"
+  },
+  "author": "",
+  "license": "ISC"
+}

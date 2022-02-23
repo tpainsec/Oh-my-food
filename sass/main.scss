@@ -1,0 +1,18 @@
+$colours: (
+    violet: #9356DC,
+    rose: #FF79DA,
+    vert: #99E2D0
+);
+
+@mixin shrikland {
+    font-family: 'Shrikland' ;
+}
+
+header{
+    background-color: map-get($colours, vert);
+    img{
+        width: 50%;
+    }
+}
+
+
