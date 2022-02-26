@@ -1,18 +1,103 @@
 $colours: (
     violet: #9356DC,
     rose: #FF79DA,
-    vert: #99E2D0
+    vert: #99E2D0,
+    grey: #F0F0F0,
+    lightgrey: #F5F5F5
 );
 
-@mixin shrikland {
-    font-family: 'Shrikland' ;
+
+
+@mixin flex-center{
+    display: flex;
+    justify-content: center;
+}
+
+h1{
+    font-family: 'Shrikhand', cursive;
+    margin: 0;
+}
+
+h2, h3, p{
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
 }
 
 header{
-    background-color: map-get($colours, vert);
+    display: flex;
+    justify-content: center;
     img{
-        width: 50%;
+        width: 40%;
     }
 }
 
+.presentation{
+    &__location{
+        display: flex;
+        background-color: map-get($colours, grey);
+        justify-content: center;
+        border-top: 2px solid #D3D3D3;
+        padding: 7px 0;
+    }
+    &__title{
+        text-align: center;
+        background-color: map-get($colours, lightgrey);
+       h2{
+           font-weight: bold;
+           font-size: 20px;
+           margin: 0 5%;
+           padding-top: 30px;
+       } 
+       p{
+           font-weight: lighter;
+           margin: 10px 10% 0 10%;
+       }
+    }
+    &__button{
+        @include flex-center;
+        background-color: #F5F5F5;
+        button{
+            background-color: map-get($colours, rose);
+            color: white;
+            border-radius: 30px;
+            padding: 10px;
+            border: unset;
+            font-weight: bold;
+            margin: 20px 0 30px 0;
+        }
+    }
+}
+
+.menu{
+    h2{
+        margin: 30px 10px 20px 10px;
+    }
+    &__buttons{
+        display: flex;
+        align-items: center;
+        margin: 0 10px 0 0;
+    }
+    &__number{
+        @include flex-center;
+        align-items: center;
+        background-color: map-get($colours, violet);
+        border-radius: 50%;
+        padding: 5px;
+        min-height: 10px;
+        min-width: 10px;
+        max-width: 10px;
+        max-height: 10px;
+        font-size: 10px;
+        color: white;
+        position: relative;
+        right: -10px;
+    }
+    button{
+        padding: 15px 0;
+        width: 100%;
+        border-radius: 15px;
+        border: unset;
+        background-color: map-get($colours, lightgrey);
+    }
+}
 
