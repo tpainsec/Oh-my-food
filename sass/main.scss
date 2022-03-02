@@ -2,8 +2,8 @@ $colours: (
     violet: #9356DC,
     rose: #FF79DA,
     vert: #99E2D0,
-    grey: #F0F0F0,
-    lightgrey: #F5F5F5
+    grey: #dfdfdf,
+    lightgrey: #f1f1f1
 );
 
 
@@ -13,69 +13,81 @@ $colours: (
     justify-content: center;
 }
 
+ul{
+    list-style: none;
+    padding: 0;
+}
+
 h1{
     font-family: 'Shrikhand', cursive;
     margin: 0;
 }
 
-h2, h3, p{
+h2, h3, p, li{
     font-family: 'Roboto', sans-serif;
     margin: 0;
 }
 
 header{
-    display: flex;
-    justify-content: center;
+    @include flex-center;
+    align-items: center;
+    height: 50px;
     img{
         width: 40%;
+        height: 50%;
+        max-width: 200px;
+        min-width: 100px;
     }
 }
 
 .presentation{
     &__location{
-        display: flex;
+        @include flex-center;
+        align-items: center;
         background-color: map-get($colours, grey);
-        justify-content: center;
-        border-top: 2px solid #D3D3D3;
-        padding: 7px 0;
+        border-top: 3px solid #D3D3D3;
+        height: 40px;
     }
     &__title{
         text-align: center;
         background-color: map-get($colours, lightgrey);
        h2{
            font-weight: bold;
-           font-size: 20px;
-           margin: 0 5%;
-           padding-top: 30px;
+           font-size: 22px;
+           margin: 0 15%;
+           padding-top: 40px;
        } 
        p{
            font-weight: lighter;
            margin: 10px 10% 0 10%;
+           font-size: 15px;
+           color: #525252;
        }
     }
     &__button{
         @include flex-center;
-        background-color: #F5F5F5;
+        background-color: map-get($colours, lightgrey);
         button{
             background-color: map-get($colours, rose);
             color: white;
             border-radius: 30px;
-            padding: 10px;
+            height: 40px;
             border: unset;
             font-weight: bold;
-            margin: 20px 0 30px 0;
+            margin: 20px 0 40px 0;
+            box-shadow: 0 5px 10px #7e2e67;
         }
     }
 }
 
 .menu{
     h2{
-        margin: 30px 10px 20px 10px;
+        margin: 40px 10px 20px 10px;
     }
     &__buttons{
         display: flex;
         align-items: center;
-        margin: 0 10px 0 0;
+        margin: 0 10px 15px 0;
     }
     &__number{
         @include flex-center;
@@ -93,11 +105,90 @@ header{
         right: -10px;
     }
     button{
-        padding: 15px 0;
+        height: 60px;
         width: 100%;
         border-radius: 15px;
         border: unset;
         background-color: map-get($colours, lightgrey);
+        font-weight: bold;
+        &:hover{
+            background-color: #eee3fc;
+        }
+    } 
+}
+
+.restaurant{
+    margin-top: 40px;
+    background-color: map-get($colours, lightgrey);
+    padding: 50px 0;
+    h2{
+        margin: 0px 20px 20px 20px;
+    }
+    &__card{
+        margin: 0 20px 15px 20px;
+        min-width: 230px;
+        box-shadow: 0px 5px 10px #dedede;
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+        border-top-right-radius: 15px;
+        border-top-left-radius: 15px;
+    }
+    &__image{
+        position: relative;
+        overflow: hidden;
+        border-top-right-radius: 15px;
+        border-top-left-radius: 15px;
+        height: 160px;
+        img{
+            width: 100%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition-property: width;
+            transition-duration: 0.3s;
+            transition-timing-function: ease; 
+        }
+    }
+    &__body{
+        background-color: white;
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+        height: 60px;
+        padding-top: 15px;
+    }
+    &__title{
+        margin: 0px 10px 5px 10px;
+        font-weight: bold;
+        font-size: 18px;
+        p{
+            margin: 0;
+        }
+    }
+    &__location{
+        margin: 0 10px 15px 10px;
+        font-size: 16px;
+        font-weight: 300;
+        
+        p{
+            margin: 0;
+        }
     }
 }
 
+footer{
+    background-color: #3B3B3B;
+    color: white;
+    padding: 20px;
+    h1{
+        font-size: 16px;
+    }
+}
+
+.footer__services{
+    ul{
+        li{
+            font-size: 16px;
+        }
+    }
+}

@@ -2,4 +2,17 @@ header {
   font-size: 20px;
 }
 
+footer {
+  background-color: #3B3B3B;
+  color: white;
+  padding: 20px;
+}
+footer h1 {
+  font-size: 16px;
+}
+
+.footer__services ul li {
+  font-size: 16px;
+}
+
 /*# sourceMappingURL=menu3.css.map */
