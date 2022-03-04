@@ -1,5 +1,42 @@
+body {
+  margin: O;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+h1 {
+  font-family: "Shrikhand", cursive;
+  margin: 0;
+}
+
+h2, h3, p, li {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+}
+
 header {
-  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  margin: 0 20px;
+}
+header span {
+  position: absolute;
+  left: 25px;
+}
+header i {
+  color: black;
+  font-size: 15px;
+}
+header img {
+  width: 40%;
+  height: 50%;
+  max-width: 200px;
+  min-width: 100px;
 }
 
 footer {
