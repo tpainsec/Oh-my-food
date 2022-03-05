@@ -1,5 +1,102 @@
+body {
+  margin: O;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+h1 {
+  font-family: "Shrikhand", cursive;
+  margin: 0;
+}
+
+h2, h3, p, li {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+}
+
 header {
-  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  margin: 0 20px;
+}
+header span {
+  position: absolute;
+  left: 25px;
+}
+header i {
+  color: black;
+  font-size: 15px;
+}
+header img {
+  width: 40%;
+  height: 50%;
+  max-width: 200px;
+  min-width: 100px;
+}
+
+.image {
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  min-height: 120px;
+  max-height: 320px;
+}
+.image img {
+  min-height: 150px;
+  min-width: 350px;
+  max-width: 100%;
+  max-height: 400px;
+}
+
+.menu {
+  background-color: #f7f5f5;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  position: relative;
+  top: -50px;
+}
+.menu__title {
+  display: flex;
+  align-items: center;
+}
+.menu__title h1 {
+  margin: 30px 20px;
+}
+.menu__entree {
+  margin: 0 20px;
+}
+.menu__dish {
+  margin: 0 20px;
+}
+.menu__dessert {
+  margin: 0 20px;
+}
+
+.entree__title h2, .dish__title h2, .dessert__title h2 {
+  font-size: 15px;
+  font-weight: 500;
+  margin: 0 0 20px 0;
+}
+
+.entree__card, .dish__card, .dessert__card {
+  background-color: white;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  box-shadow: 0 5px 10px #b8b8b8;
+}
+
+.card__title {
+  font-weight: bold;
+}
+
+.card__description {
+  overflow: scroll;
 }
 
 footer {

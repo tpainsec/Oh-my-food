@@ -40,7 +40,7 @@ header img {
 }
 .presentation__title {
   text-align: center;
-  background-color: #f1f1f1;
+  background-color: #f7f5f5;
 }
 .presentation__title h2 {
   font-weight: bold;
@@ -57,7 +57,7 @@ header img {
 .presentation__button {
   display: flex;
   justify-content: center;
-  background-color: #f1f1f1;
+  background-color: #f7f5f5;
 }
 .presentation__button button {
   background-color: #FF79DA;
@@ -99,7 +99,7 @@ header img {
   width: 100%;
   border-radius: 15px;
   border: unset;
-  background-color: #f1f1f1;
+  background-color: #f7f5f5;
   font-weight: bold;
 }
 .menu button:hover {
@@ -108,8 +108,8 @@ header img {
 
 .restaurant {
   margin-top: 40px;
-  background-color: #f1f1f1;
-  padding: 50px 0;
+  background-color: #f7f5f5;
+  padding: 40px 0;
 }
 .restaurant h2 {
   margin: 0px 20px 20px 20px;

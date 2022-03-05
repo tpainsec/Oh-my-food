@@ -3,7 +3,7 @@ $colours: (
     rose: #FF79DA,
     vert: #99E2D0,
     grey: #dfdfdf,
-    lightgrey: #f1f1f1
+    lightgrey: #f7f5f5
 );
 
 @mixin flex-center{
@@ -49,6 +49,66 @@ header{
         max-width: 200px;
         min-width: 100px;
     }
+}
+
+.image{
+    overflow: hidden;
+    @include flex-center;
+    min-height: 200px;
+    img{
+        min-height: 230px;
+        min-width: 350px;
+        max-width: 100%;
+        max-height: 400px;
+    }
+}
+
+.menu{
+    background-color: map-get($colours, lightgrey);
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    position: relative;
+    top: -50px;
+    &__title{
+        display: flex;
+        align-items: center;
+        h1{
+            margin: 30px 20px;
+        }
+    }
+    &__entree{
+        margin: 0 20px;
+    }
+    &__dish{
+        margin: 0 20px;
+    }
+    &__dessert{
+        margin: 0 20px;
+    }
+}
+
+.entree__title, .dish__title, .dessert__title{
+    h2{
+        font-size: 15px;
+        font-weight: 500;
+        margin: 0 0 20px 0;
+    }
+}
+
+.entree__card, .dish__card, .dessert__card{
+    background-color: white;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    box-shadow: 0 5px 10px rgb(184, 184, 184);
+}
+
+.card__title{
+    font-weight: bold;
+}
+
+.card__description{
+    overflow: scroll;
 }
 
 footer{
