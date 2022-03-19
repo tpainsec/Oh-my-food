@@ -1,5 +1,6 @@
 body {
-  margin: O;
+  margin: 0;
+  height: 100%;
 }
 
 ul {
@@ -7,14 +8,37 @@ ul {
   padding: 0;
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
+
 h1 {
   font-family: "Shrikhand", cursive;
   margin: 0;
 }
 
-h2, h3, p, li {
+h2, h3, p, li, button {
   font-family: "Roboto", sans-serif;
   margin: 0;
+}
+
+#spinner {
+  background-color: #f7f5f5;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: scale(1);
+}
+#spinner:hover {
+  transform: scale(0);
+  transition: transform 3000ms;
 }
 
 header {
@@ -23,41 +47,77 @@ header {
   align-items: center;
   height: 50px;
 }
+@media screen and (min-width: 992px) {
+  header {
+    height: 100px;
+  }
+}
 header img {
   width: 40%;
   height: 50%;
   max-width: 200px;
   min-width: 100px;
 }
+@media screen and (min-width: 992px) {
+  header img {
+    min-width: 30%;
+  }
+}
 
 .presentation__location {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #dfdfdf;
+  background-color: #e4e4e4;
   border-top: 3px solid #D3D3D3;
   height: 40px;
+  /* @include desktop-only{ 
+      background-color: white;
+      border: unset;
+      display: block;
+      margin: 0 35px;
+      height: auto;
+  } */
+}
+.presentation__location i {
+  margin-right: 20px;
 }
 .presentation__title {
   text-align: center;
   background-color: #f7f5f5;
+  /* @include desktop-only{
+      text-align: left;
+      background-color: white; 
+  } */
 }
 .presentation__title h2 {
   font-weight: bold;
   font-size: 22px;
   margin: 0 15%;
   padding-top: 40px;
+  /* @include desktop-only{
+      margin: 0 35px;
+      padding: 0;
+  } */
 }
 .presentation__title p {
   font-weight: lighter;
   margin: 10px 10% 0 10%;
   font-size: 15px;
   color: #525252;
+  /* @include desktop-only{
+      margin: 0 35px;
+  } */
 }
 .presentation__button {
   display: flex;
   justify-content: center;
   background-color: #f7f5f5;
+  /* @include desktop-only{
+      background-color: white;
+      display: block;
+      margin: 0 35px;
+  } */
 }
 .presentation__button button {
   background-color: #FF79DA;
@@ -65,18 +125,33 @@ header img {
   border-radius: 30px;
   height: 40px;
   border: unset;
-  font-weight: bold;
   margin: 20px 0 40px 0;
-  box-shadow: 0 5px 10px #7e2e67;
+  box-shadow: 0 0px 5px #7e2e67;
+  min-width: 50%;
+  font-weight: bold;
+  background-image: linear-gradient(170deg, #FF79DA, #9356DC);
+  /* @include desktop-only{
+      margin: 20 35px 0 35px;
+  } */
 }
 
 .menu h2 {
-  margin: 40px 10px 20px 10px;
+  margin: 40px 20px 20px 20px;
 }
-.menu__buttons {
+@media screen and (min-width: 992px) {
+  .menu__buttons {
+    display: flex;
+  }
+}
+.menu__button {
   display: flex;
   align-items: center;
-  margin: 0 10px 15px 0;
+  margin: 0 20px 15px 10px;
+}
+@media screen and (min-width: 992px) {
+  .menu__button {
+    width: 30%;
+  }
 }
 .menu__number {
   display: flex;
@@ -89,21 +164,33 @@ header img {
   min-width: 10px;
   max-width: 10px;
   max-height: 10px;
-  font-size: 10px;
+  font-size: 12px;
   color: white;
   position: relative;
   right: -10px;
 }
 .menu button {
-  height: 60px;
+  height: 70px;
   width: 100%;
-  border-radius: 15px;
+  border-radius: 18px;
   border: unset;
   background-color: #f7f5f5;
   font-weight: bold;
+  font-size: 15px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 .menu button:hover {
   background-color: #eee3fc;
+}
+.menu button:hover i {
+  color: #9356DC;
+}
+.menu button i {
+  font-size: 16px;
+  margin: 0 20px;
+  color: #696969;
 }
 
 .restaurant {
@@ -111,8 +198,31 @@ header img {
   background-color: #f7f5f5;
   padding: 40px 0;
 }
+@media screen and (min-width: 992px) {
+  .restaurant {
+    padding: 35px 0;
+  }
+}
 .restaurant h2 {
   margin: 0px 20px 20px 20px;
+}
+@media screen and (min-width: 992px) {
+  .restaurant h2 {
+    margin: 0 35px 20px 35px;
+  }
+}
+@media screen and (min-width: 992px) {
+  .restaurant__cards {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 0 35px;
+  }
+}
+@media screen and (min-width: 992px) and (min-width: 992px) {
+  .restaurant__cards a {
+    width: 24%;
+  }
 }
 .restaurant__card {
   margin: 0 20px 15px 20px;
@@ -122,6 +232,11 @@ header img {
   border-bottom-right-radius: 15px;
   border-top-right-radius: 15px;
   border-top-left-radius: 15px;
+}
+@media screen and (min-width: 992px) {
+  .restaurant__card {
+    margin: 0;
+  }
 }
 .restaurant__image {
   position: relative;
@@ -140,12 +255,31 @@ header img {
   transition-duration: 0.3s;
   transition-timing-function: ease;
 }
-.restaurant__body {
+.restaurant__new {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  margin: 10px 10px 0 0;
+}
+.restaurant__new p {
+  background-color: #99E2D0;
+  margin: 5px;
+  padding: 8px;
+  font-size: 14px;
+  color: #278870;
+}
+.restaurant__desc {
+  display: flex;
+  justify-content: space-between;
   background-color: white;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
+}
+.restaurant__body {
+  border-bottom-left-radius: 15px;
   height: 60px;
   padding-top: 15px;
+  width: 80%;
 }
 .restaurant__title {
   margin: 0px 10px 5px 10px;
@@ -163,18 +297,56 @@ header img {
 .restaurant__location p {
   margin: 0;
 }
+.restaurant__heart {
+  width: 20%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 0 20px 0 0;
+}
+.restaurant__heart .fa-heart {
+  font-size: 22px;
+}
+.restaurant__heart .fa-heart:hover {
+  background-image: linear-gradient(170deg, #FF79DA, #9356DC);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
 footer {
   background-color: #3B3B3B;
   color: white;
   padding: 20px;
 }
+@media screen and (min-width: 992px) {
+  footer {
+    padding: 35px;
+  }
+}
 footer h1 {
   font-size: 16px;
 }
+@media screen and (min-width: 992px) {
+  footer h1 {
+    margin-bottom: 20px;
+  }
+}
 
+@media screen and (min-width: 992px) {
+  .footer__services ul {
+    display: flex;
+  }
+}
 .footer__services ul li {
   font-size: 16px;
+}
+@media screen and (min-width: 992px) {
+  .footer__services ul li {
+    width: 25%;
+  }
+}
+.footer__services ul li i {
+  font-size: 12px;
 }
 
 /*# sourceMappingURL=styles.css.map */

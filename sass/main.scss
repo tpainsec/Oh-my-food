@@ -2,17 +2,35 @@ $colours: (
     violet: #9356DC,
     rose: #FF79DA,
     vert: #99E2D0,
-    grey: #dfdfdf,
+    grey: #e4e4e4,
     lightgrey: #f7f5f5
 );
 
-@mixin flex-center{
+$breakpoints: (
+    tablette: 768px,
+    desktop: 992px
+);
+
+@mixin flex-center {
     display: flex;
     justify-content: center;
 }
 
+@mixin tablette-only {
+    @media screen and (min-width: map-get($breakpoints, tablette)) and (max-width: map-get($breakpoints, desktop)) {
+        @content; 
+    }
+}
+
+@mixin desktop-only {
+    @media screen and (min-width: map-get($breakpoints, desktop)){
+        @content;
+    }
+}
+
 body{
-    margin: O;
+    margin: 0;
+    height: 100%;
 }
 
 ul{
@@ -20,25 +38,53 @@ ul{
     padding: 0;
 }
 
+a{
+    text-decoration: none;
+    color: black;
+}
+
 h1{
     font-family: 'Shrikhand', cursive;
     margin: 0;
 }
 
-h2, h3, p, li{
+h2, h3, p, li, button{
     font-family: 'Roboto', sans-serif;
     margin: 0;
+}
+
+#spinner{
+    background-color: map-get($colours, lightgrey);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    z-index: 1000;
+    @include flex-center;
+    align-items: center;
+    transform: scale(1);
+    &:hover{
+        transform: scale(0);
+        transition: transform 3000ms; 
+    }
 }
 
 header{
     @include flex-center;
     align-items: center;
     height: 50px;
+    @include desktop-only{
+        height: 100px;
+    }
     img{
         width: 40%;
         height: 50%;
         max-width: 200px;
         min-width: 100px;
+        @include desktop-only{
+           min-width: 30%;
+        }
     }
 }
 
@@ -49,47 +95,86 @@ header{
         background-color: map-get($colours, grey);
         border-top: 3px solid #D3D3D3;
         height: 40px;
+        i{
+            margin-right: 20px;
+        }
+        /* @include desktop-only{ 
+            background-color: white;
+            border: unset;
+            display: block;
+            margin: 0 35px;
+            height: auto;
+        } */ 
     }
     &__title{
         text-align: center;
         background-color: map-get($colours, lightgrey);
+        /* @include desktop-only{
+            text-align: left;
+            background-color: white; 
+        } */ 
        h2{
-           font-weight: bold;
-           font-size: 22px;
-           margin: 0 15%;
-           padding-top: 40px;
+            font-weight: bold;
+            font-size: 22px;
+            margin: 0 15%;
+            padding-top: 40px;
+            /* @include desktop-only{
+                margin: 0 35px;
+                padding: 0;
+            } */
        } 
        p{
-           font-weight: lighter;
-           margin: 10px 10% 0 10%;
-           font-size: 15px;
-           color: #525252;
+            font-weight: lighter;
+            margin: 10px 10% 0 10%;
+            font-size: 15px;
+            color: #525252;
+            /* @include desktop-only{
+                margin: 0 35px;
+            } */
        }
     }
     &__button{
         @include flex-center;
         background-color: map-get($colours, lightgrey);
+        /* @include desktop-only{
+            background-color: white;
+            display: block;
+            margin: 0 35px;
+        } */ 
         button{
             background-color: map-get($colours, rose);
             color: white;
             border-radius: 30px;
             height: 40px;
             border: unset;
-            font-weight: bold;
             margin: 20px 0 40px 0;
-            box-shadow: 0 5px 10px #7e2e67;
+            box-shadow: 0 0px 5px #7e2e67;
+            min-width: 50%;
+            font-weight: bold;
+            background-image:linear-gradient(170deg,map-get($colours,rose),map-get($colours,violet));
+            /* @include desktop-only{
+                margin: 20 35px 0 35px;
+            } */
         }
     }
 }
 
 .menu{
     h2{
-        margin: 40px 10px 20px 10px;
+        margin: 40px 20px 20px 20px;
     }
     &__buttons{
+        @include desktop-only{
+            display: flex;
+        }
+    }
+    &__button{
         display: flex;
         align-items: center;
-        margin: 0 10px 15px 0;
+        margin: 0 20px 15px 10px;
+        @include desktop-only{
+            width: 30%;
+        }
     }
     &__number{
         @include flex-center;
@@ -101,20 +186,32 @@ header{
         min-width: 10px;
         max-width: 10px;
         max-height: 10px;
-        font-size: 10px;
+        font-size: 12px;
         color: white;
         position: relative;
         right: -10px;
     }
     button{
-        height: 60px;
+        height: 70px;
         width: 100%;
-        border-radius: 15px;
+        border-radius: 18px;
         border: unset;
         background-color: map-get($colours, lightgrey);
         font-weight: bold;
+        font-size: 15px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
         &:hover{
             background-color: #eee3fc;
+            i{
+                color: map-get($colours, violet);
+            }
+        }
+        i{
+            font-size: 16px;
+            margin: 0 20px;
+            color: #696969;
         }
     } 
 }
@@ -123,8 +220,27 @@ header{
     margin-top: 40px;
     background-color: map-get($colours, lightgrey);
     padding: 40px 0;
+    @include desktop-only{
+        padding: 35px 0;
+    }
     h2{
         margin: 0px 20px 20px 20px;
+        @include desktop-only{
+            margin: 0 35px 20px 35px;
+        }
+    }
+    &__cards{
+        @include desktop-only{
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin: 0 35px;
+            a{
+                @include desktop-only{
+                    width: 24%;
+                }
+            }
+        } 
     }
     &__card{
         margin: 0 20px 15px 20px;
@@ -134,6 +250,9 @@ header{
         border-bottom-right-radius: 15px;
         border-top-right-radius: 15px;
         border-top-left-radius: 15px;
+        @include desktop-only{
+            margin: 0;
+        }
     }
     &__image{
         position: relative;
@@ -152,12 +271,31 @@ header{
             transition-timing-function: ease; 
         }
     }
-    &__body{
+    &__new{
+        position: relative;
+        display: flex; 
+        justify-content: flex-end;
+        margin: 10px 10px 0 0;
+        p{
+            background-color: map-get($colours, vert);
+            margin: 5px;
+            padding: 8px;
+            font-size: 14px;
+            color: darken(#99E2D0, 40%);
+        }
+    }
+    &__desc{
+        display: flex;
+        justify-content: space-between;
         background-color: white;
         border-bottom-left-radius: 15px;
         border-bottom-right-radius: 15px;
+    }
+    &__body{
+        border-bottom-left-radius: 15px;
         height: 60px;
         padding-top: 15px;
+        width: 80%;
     }
     &__title{
         margin: 0px 10px 5px 10px;
@@ -171,9 +309,23 @@ header{
         margin: 0 10px 15px 10px;
         font-size: 16px;
         font-weight: 300;
-        
         p{
             margin: 0;
+        }
+    }
+    &__heart{
+        width: 20%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin: 0 20px 0 0;
+        .fa-heart{
+            font-size: 22px;
+            &:hover{
+                background-image: linear-gradient(170deg, map-get($colours,rose), map-get($colours,violet));
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
         }
     }
 }
@@ -182,15 +334,31 @@ footer{
     background-color: #3B3B3B;
     color: white;
     padding: 20px;
+    @include desktop-only{
+        padding: 35px;
+    }
     h1{
         font-size: 16px;
+        @include desktop-only{
+            margin-bottom: 20px;
+        }
     }
 }
 
 .footer__services{
+    
     ul{
+        @include desktop-only{
+            display: flex;
+        }
         li{
             font-size: 16px;
+            @include desktop-only{
+                width: 25%;
+            }
+            i{
+                font-size: 12px;
+            }
         }
     }
 }

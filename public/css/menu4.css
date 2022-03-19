@@ -1,5 +1,6 @@
 body {
-  margin: O;
+  margin: 0;
+  background-color: #f7f5f5;
 }
 
 ul {
@@ -12,7 +13,7 @@ h1 {
   margin: 0;
 }
 
-h2, h3, p, li {
+h2, h3, p, li, button {
   font-family: "Roboto", sans-serif;
   margin: 0;
 }
@@ -24,19 +25,40 @@ header {
   height: 50px;
   margin: 0 20px;
 }
+@media screen and (min-width: 992px) {
+  header {
+    height: 100px;
+    margin: 0 35px;
+  }
+}
 header span {
   position: absolute;
   left: 25px;
 }
+@media screen and (min-width: 992px) {
+  header span {
+    left: 35px;
+  }
+}
 header i {
   color: black;
   font-size: 15px;
+}
+@media screen and (min-width: 992px) {
+  header i {
+    font-size: 20px;
+  }
 }
 header img {
   width: 40%;
   height: 50%;
   max-width: 200px;
   min-width: 100px;
+}
+@media screen and (min-width: 992px) {
+  header img {
+    min-width: 30%;
+  }
 }
 
 .image {
@@ -57,23 +79,80 @@ header img {
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
   position: relative;
-  top: -50px;
+  top: -40px;
 }
 .menu__title {
   display: flex;
   align-items: center;
 }
+@media screen and (min-width: 992px) {
+  .menu__title {
+    margin: 0 35px;
+  }
+}
 .menu__title h1 {
   margin: 30px 20px;
+}
+@media screen and (min-width: 992px) {
+  .menu__title h1 {
+    margin: 30px 0;
+  }
+}
+@media screen and (min-width: 992px) {
+  .menu__presentation {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 35px;
+  }
 }
 .menu__entree {
   margin: 0 20px;
 }
+@media screen and (min-width: 992px) {
+  .menu__entree {
+    width: 30%;
+    margin: 0;
+  }
+}
 .menu__dish {
   margin: 0 20px;
 }
+@media screen and (min-width: 992px) {
+  .menu__dish {
+    width: 30%;
+    margin: 0;
+  }
+}
 .menu__dessert {
   margin: 0 20px;
+}
+@media screen and (min-width: 992px) {
+  .menu__dessert {
+    width: 30%;
+    margin: 0;
+  }
+}
+.menu__button {
+  display: flex;
+  justify-content: center;
+}
+.menu__button button {
+  margin: 30px 0 0 0;
+  width: 50%;
+  padding: 10px 0;
+  border-radius: 25px;
+  border: unset;
+  box-shadow: 0 5px 10px #7e2e67;
+  background-color: #FF79DA;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  background-image: linear-gradient(170deg, #FF79DA, #9356DC);
+}
+@media screen and (min-width: 992px) {
+  .menu__button button {
+    max-width: 30%;
+  }
 }
 
 .entree__title h2, .dish__title h2, .dessert__title h2 {
@@ -81,13 +160,42 @@ header img {
   font-weight: 500;
   margin: 0 0 20px 0;
 }
+@media screen and (min-width: 992px) {
+  .entree__title h2, .dish__title h2, .dessert__title h2 {
+    margin: 0 0 20px 0;
+  }
+}
+.entree__title h2:after, .dish__title h2:after, .dessert__title h2:after {
+  content: "";
+  display: block;
+  border-bottom: 3px solid #99E2D0;
+  width: 35px;
+  height: 2px;
+}
+@media screen and (min-width: 992px) {
+  .entree__title h2:after, .dish__title h2:after, .dessert__title h2:after {
+    width: 45px;
+  }
+}
+
+.dish__title h2, .dessert__title h2 {
+  margin: 30px 0 20px 0;
+}
+@media screen and (min-width: 992px) {
+  .dish__title h2, .dessert__title h2 {
+    margin: 0 0 20px 0;
+  }
+}
 
 .entree__card, .dish__card, .dessert__card {
   background-color: white;
   border-radius: 10px;
-  margin-bottom: 10px;
-  padding: 10px;
+  margin-bottom: 15px;
   box-shadow: 0 5px 10px #b8b8b8;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10px;
 }
 
 .card__title {
@@ -95,7 +203,12 @@ header img {
 }
 
 .card__description {
-  overflow: scroll;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  color: #585858;
+  font-size: 13px;
+  margin: 5px 0 0 0;
 }
 
 footer {
@@ -103,12 +216,32 @@ footer {
   color: white;
   padding: 20px;
 }
+@media screen and (min-width: 992px) {
+  footer {
+    padding: 35px;
+  }
+}
 footer h1 {
   font-size: 16px;
 }
+@media screen and (min-width: 992px) {
+  footer h1 {
+    margin-bottom: 20px;
+  }
+}
 
+@media screen and (min-width: 992px) {
+  .footer__services ul {
+    display: flex;
+  }
+}
 .footer__services ul li {
   font-size: 16px;
+}
+@media screen and (min-width: 992px) {
+  .footer__services ul li {
+    width: 25%;
+  }
 }
 
 /*# sourceMappingURL=menu4.css.map */
