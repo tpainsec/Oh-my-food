@@ -10,9 +10,13 @@
     <script src="https://kit.fontawesome.com/8f15ac1d8c.js" crossorigin="anonymous"></script> 
 </head>
 <body>
-    <div id="spinner">
-        <i class="fa-solid fa-spinner"></i>
-    </div>
+    <div class="loader">
+        <div class="loader__itemContainer">
+          <div class="loader__item loader__item--1"></div>
+          <div class="loader__item loader__item--2"></div>
+          <div class="loader__item loader__item--3"></div>
+        </div>
+      </div>
     <header>
         <img id="logo" src="images/ohmyfood.png" alt="logo d'Ohmyfood">
     </header>
@@ -115,9 +119,6 @@
                     <div class="restaurant__card">
                         <div class="restaurant__image">
                             <img src="images/menu3.jpg" alt="photo d'un plat">
-                            <div class="restaurant__new">
-                                <p> Nouveau </p>
-                            </div>
                         </div>
                         <div class="restaurant__desc">
                             <div class="restaurant__body">
@@ -138,9 +139,6 @@
                     <div class="restaurant__card">
                         <div class="restaurant__image">
                             <img src="images/menu4.jpg" alt="photo d'un plat">
-                            <div class="restaurant__new">
-                                <p> Nouveau </p>
-                            </div>
                         </div>
                         <div class="restaurant__desc">
                             <div class="restaurant__body">
@@ -167,7 +165,7 @@
                 <li> <i class="fa-solid fa-utensils"></i>&nbsp; Proposer un restaurant </li>
                 <li> <i class="fa-solid fa-handshake-angle"></i> Devenir partenaire </li>
                 <li> Mentions légales </li>
-                <li> Contact </li>
+                <li> <a href="mailto:contact@ohmyfood.com"> Contact </a></li>
             </ul>
         </div>
     </footer>

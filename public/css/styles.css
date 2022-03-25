@@ -23,24 +23,66 @@ h2, h3, p, li, button {
   margin: 0;
 }
 
-#spinner {
-  background-color: #f7f5f5;
+.loader {
   position: fixed;
-  width: 100%;
   height: 100%;
-  top: 0px;
-  left: 0px;
-  z-index: 1000;
+  width: 100%;
+  left: 0;
+  top: 0;
+  background-color: rgba(236, 236, 236, 0.9);
+  animation: loader 0.01s;
+  animation-delay: 2.5s;
+  animation-fill-mode: both;
+  z-index: 10000;
   display: flex;
-  justify-content: center;
   align-items: center;
-  transform: scale(1);
+  justify-content: center;
 }
-#spinner:hover {
-  transform: scale(0);
-  transition: transform 3000ms;
+.loader__item {
+  height: 15px;
+  width: 15px;
+  animation: 2s rotation;
+}
+.loader__itemContainer {
+  display: flex;
+  width: 5rem;
+  justify-content: space-between;
+}
+.loader__item--1 {
+  background-color: #9356DC;
+}
+.loader__item--2 {
+  background-color: #FF79DA;
+  animation-delay: 0.25s;
+}
+.loader__item--3 {
+  background-color: #99E2D0;
+  animation-delay: 0.5s;
 }
 
+@keyframes loader {
+  100% {
+    opacity: 0;
+    z-index: -1;
+  }
+}
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(90deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  75% {
+    transform: rotate(270deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 header {
   display: flex;
   justify-content: center;
@@ -60,7 +102,8 @@ header img {
 }
 @media screen and (min-width: 992px) {
   header img {
-    min-width: 30%;
+    min-width: 20%;
+    max-width: 300px;
   }
 }
 
@@ -71,53 +114,52 @@ header img {
   background-color: #e4e4e4;
   border-top: 3px solid #D3D3D3;
   height: 40px;
-  /* @include desktop-only{ 
-      background-color: white;
-      border: unset;
-      display: block;
-      margin: 0 35px;
-      height: auto;
-  } */
 }
 .presentation__location i {
   margin-right: 20px;
 }
+@media screen and (min-width: 992px) {
+  .presentation__location i {
+    margin-right: 30px;
+  }
+}
+@media screen and (min-width: 992px) {
+  .presentation__location {
+    height: 80px;
+    font-size: 20px;
+    font-weight: 700;
+  }
+}
 .presentation__title {
   text-align: center;
   background-color: #f7f5f5;
-  /* @include desktop-only{
-      text-align: left;
-      background-color: white; 
-  } */
 }
 .presentation__title h2 {
   font-weight: bold;
   font-size: 22px;
   margin: 0 15%;
   padding-top: 40px;
-  /* @include desktop-only{
-      margin: 0 35px;
-      padding: 0;
-  } */
+}
+@media screen and (min-width: 992px) {
+  .presentation__title h2 {
+    font-size: 25px;
+  }
 }
 .presentation__title p {
   font-weight: lighter;
   margin: 10px 10% 0 10%;
   font-size: 15px;
   color: #525252;
-  /* @include desktop-only{
-      margin: 0 35px;
-  } */
+}
+@media screen and (min-width: 992px) {
+  .presentation__title p {
+    font-size: 19px;
+  }
 }
 .presentation__button {
   display: flex;
   justify-content: center;
   background-color: #f7f5f5;
-  /* @include desktop-only{
-      background-color: white;
-      display: block;
-      margin: 0 35px;
-  } */
 }
 .presentation__button button {
   background-color: #FF79DA;
@@ -130,9 +172,12 @@ header img {
   min-width: 50%;
   font-weight: bold;
   background-image: linear-gradient(170deg, #FF79DA, #9356DC);
-  /* @include desktop-only{
-      margin: 20 35px 0 35px;
-  } */
+}
+@media screen and (min-width: 992px) {
+  .presentation__button button {
+    min-width: 22%;
+    height: 50px;
+  }
 }
 
 .menu h2 {
@@ -267,6 +312,7 @@ header img {
   padding: 8px;
   font-size: 14px;
   color: #278870;
+  border-radius: 3px;
 }
 .restaurant__desc {
   display: flex;
@@ -308,11 +354,21 @@ header img {
   font-size: 22px;
 }
 .restaurant__heart .fa-heart:hover {
-  background-image: linear-gradient(170deg, #FF79DA, #9356DC);
+  animation: fill 1s ease-out;
+  background: linear-gradient(#9356DC, #FF79DA);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  font-weight: bold;
 }
 
+@keyframes fill {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 footer {
   background-color: #3B3B3B;
   color: white;
@@ -347,6 +403,9 @@ footer h1 {
 }
 .footer__services ul li i {
   font-size: 12px;
+}
+.footer__services ul li a {
+  color: white;
 }
 
 /*# sourceMappingURL=styles.css.map */

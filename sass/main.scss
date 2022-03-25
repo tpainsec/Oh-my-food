@@ -53,20 +53,65 @@ h2, h3, p, li, button{
     margin: 0;
 }
 
-#spinner{
-    background-color: map-get($colours, lightgrey);
+.loader{
     position: fixed;
-    width: 100%;
     height: 100%;
-    top: 0px;
-    left: 0px;
-    z-index: 1000;
-    @include flex-center;
-    align-items: center;
-    transform: scale(1);
-    &:hover{
-        transform: scale(0);
-        transition: transform 3000ms; 
+    width: 100%;
+    left: 0;
+    top: 0;
+    background-color: rgba(236, 236, 236, 0.9);
+    animation: loader 0.01s;
+    animation-delay: 2.5s;
+    animation-fill-mode: both;
+    z-index: 10000;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    &__item{
+      height: 15px;
+      width: 15px;
+      animation: 2s rotation;
+      &Container{
+        display: flex;
+        width: 5rem;
+        justify-content: space-between;
+      }
+      &--1{
+        background-color: map-get($colours,violet);
+      }
+      &--2{
+        background-color: map-get($colours, rose);
+        animation-delay: 0.25s;
+      }
+      &--3{
+        background-color: map-get($colours, vert);
+        animation-delay: 0.5s;
+      }
+    }
+}
+
+@keyframes loader{
+    100%{
+      opacity: 0;
+      z-index: -1;
+    }
+} 
+
+@keyframes rotation{
+    0%{
+        transform: rotate(0deg);
+    }
+    25%{
+        transform: rotate(90deg)
+    }
+    50%{
+        transform: rotate(180deg);
+    }
+    75%{
+        transform: rotate(270deg);
+    }
+    100%{
+        transform: rotate(360deg);
     }
 }
 
@@ -83,7 +128,8 @@ header{
         max-width: 200px;
         min-width: 100px;
         @include desktop-only{
-           min-width: 30%;
+           min-width: 20%;
+           max-width: 300px;
         }
     }
 }
@@ -97,50 +143,41 @@ header{
         height: 40px;
         i{
             margin-right: 20px;
+            @include desktop-only{
+                margin-right: 30px;
+            }
         }
-        /* @include desktop-only{ 
-            background-color: white;
-            border: unset;
-            display: block;
-            margin: 0 35px;
-            height: auto;
-        } */ 
+        @include desktop-only{ 
+            height: 80px;
+            font-size: 20px;
+            font-weight: 700;
+        } 
     }
     &__title{
         text-align: center;
         background-color: map-get($colours, lightgrey);
-        /* @include desktop-only{
-            text-align: left;
-            background-color: white; 
-        } */ 
        h2{
             font-weight: bold;
             font-size: 22px;
             margin: 0 15%;
             padding-top: 40px;
-            /* @include desktop-only{
-                margin: 0 35px;
-                padding: 0;
-            } */
+            @include desktop-only{
+                font-size: 25px;
+            } 
        } 
        p{
             font-weight: lighter;
             margin: 10px 10% 0 10%;
             font-size: 15px;
             color: #525252;
-            /* @include desktop-only{
-                margin: 0 35px;
-            } */
+            @include desktop-only{
+               font-size: 19px;
+            } 
        }
     }
     &__button{
         @include flex-center;
         background-color: map-get($colours, lightgrey);
-        /* @include desktop-only{
-            background-color: white;
-            display: block;
-            margin: 0 35px;
-        } */ 
         button{
             background-color: map-get($colours, rose);
             color: white;
@@ -152,9 +189,10 @@ header{
             min-width: 50%;
             font-weight: bold;
             background-image:linear-gradient(170deg,map-get($colours,rose),map-get($colours,violet));
-            /* @include desktop-only{
-                margin: 20 35px 0 35px;
-            } */
+            @include desktop-only{
+                min-width: 22%;
+                height: 50px;
+            } 
         }
     }
 }
@@ -282,6 +320,7 @@ header{
             padding: 8px;
             font-size: 14px;
             color: darken(#99E2D0, 40%);
+            border-radius: 3px; 
         }
     }
     &__desc{
@@ -322,11 +361,22 @@ header{
         .fa-heart{
             font-size: 22px;
             &:hover{
-                background-image: linear-gradient(170deg, map-get($colours,rose), map-get($colours,violet));
+                animation: fill 1s ease-out;
+                background: linear-gradient(map-get($colours, violet), map-get($colours, rose));
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
+                font-weight: bold;  
             }
         }
+    }
+}
+
+@keyframes fill{
+    0%{
+        opacity:0;
+    }
+    100%{
+        opacity:1;
     }
 }
 
@@ -358,6 +408,9 @@ footer{
             }
             i{
                 font-size: 12px;
+            }
+            a{
+                color: white;
             }
         }
     }

@@ -8,6 +8,11 @@ ul {
   padding: 0;
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
+
 h1 {
   font-family: "Shrikhand", cursive;
   margin: 0;
@@ -65,7 +70,14 @@ header img {
   overflow: hidden;
   display: flex;
   justify-content: center;
+  align-items: center;
   min-height: 200px;
+}
+@media screen and (min-width: 992px) {
+  .image {
+    height: 100%;
+    width: 100%;
+  }
 }
 .image img {
   min-height: 230px;
@@ -73,7 +85,21 @@ header img {
   max-width: 100%;
   max-height: 400px;
 }
+@media screen and (min-width: 992px) {
+  .image img {
+    height: 100%;
+    width: 100%;
+  }
+}
 
+@keyframes fill {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 .menu {
   background-color: #f7f5f5;
   border-top-left-radius: 30px;
@@ -81,22 +107,40 @@ header img {
   position: relative;
   top: -40px;
 }
+@media screen and (min-width: 992px) {
+  .menu {
+    border-radius: 0px;
+  }
+}
 .menu__title {
   display: flex;
+  justify-content: space-between;
   align-items: center;
+  margin: 0 20px;
 }
 @media screen and (min-width: 992px) {
   .menu__title {
     margin: 0 35px;
+    justify-content: center;
   }
 }
 .menu__title h1 {
-  margin: 30px 20px;
+  margin: 30px 0;
 }
 @media screen and (min-width: 992px) {
   .menu__title h1 {
-    margin: 30px 0;
+    margin: 30px 2% 30px 0;
   }
+}
+.menu__title .fa-heart {
+  font-size: 22px;
+}
+.menu__title .fa-heart:hover {
+  animation: fill 1s ease-out;
+  background: linear-gradient(#9356DC, #FF79DA);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
 }
 @media screen and (min-width: 992px) {
   .menu__presentation {
@@ -188,27 +232,76 @@ header img {
 }
 
 .entree__card, .dish__card, .dessert__card {
-  background-color: white;
+  width: 100%;
+  height: 60px;
   border-radius: 10px;
-  margin-bottom: 15px;
   box-shadow: 0 5px 10px #b8b8b8;
   display: flex;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+@media screen and (min-width: 992px) {
+  .entree__card, .dish__card, .dessert__card {
+    margin-bottom: 20px;
+  }
+}
+.entree__card:hover .entree__check, .entree__card:hover .dish__check, .entree__card:hover .dessert__check, .dish__card:hover .entree__check, .dish__card:hover .dish__check, .dish__card:hover .dessert__check, .dessert__card:hover .entree__check, .dessert__card:hover .dish__check, .dessert__card:hover .dessert__check {
+  width: 25%;
+}
+.entree__card:hover .entree__body, .entree__card:hover .dish__body, .entree__card:hover .dessert__body, .dish__card:hover .entree__body, .dish__card:hover .dish__body, .dish__card:hover .dessert__body, .dessert__card:hover .entree__body, .dessert__card:hover .dish__body, .dessert__card:hover .dessert__body {
+  text-overflow: clip ellipsis;
+}
+.entree__card:hover i, .dish__card:hover i, .dessert__card:hover i {
+  transform: rotate(0deg);
+}
+
+.entree__body, .dish__body, .dessert__body {
+  width: 100%;
+  height: 60px;
+  padding: 6px 10px;
+  border-radius: 10px 0 0 10px;
+  box-sizing: border-box;
+  background-color: white;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.entree__check, .dish__check, .dessert__check {
+  width: 0px;
+  overflow: hidden;
+  transition: width 500ms;
+  background-color: #99E2D0;
+  border-radius: 0 10px 10px 0;
+  display: flex;
   justify-content: center;
-  flex-direction: column;
-  padding: 10px;
+  align-items: center;
+}
+.entree__check i, .dish__check i, .dessert__check i {
+  font-size: 20px;
+  transform: rotate(210deg);
+  transition: transform 500ms;
+  color: white;
 }
 
 .card__title {
   font-weight: bold;
+  font-size: 16px;
 }
 
 .card__description {
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
   color: #585858;
-  font-size: 13px;
-  margin: 5px 0 0 0;
+  font-size: 14px;
+  margin-top: 8px;
+  margin-bottom: 0;
+  display: flex;
+  justify-content: space-between;
+}
+.card__description span {
+  margin-left: 10%;
+  font-size: 15px;
+  font-weight: bold;
+  color: black;
 }
 
 footer {
@@ -236,12 +329,19 @@ footer h1 {
   }
 }
 .footer__services ul li {
+  margin-bottom: 8px;
   font-size: 16px;
 }
 @media screen and (min-width: 992px) {
   .footer__services ul li {
     width: 25%;
   }
+}
+.footer__services ul li i {
+  font-size: 12px;
+}
+.footer__services ul li a {
+  color: white;
 }
 
 /*# sourceMappingURL=menu4.css.map */
