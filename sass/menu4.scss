@@ -239,6 +239,10 @@ header{
     display: flex;
     overflow: hidden;
     margin-bottom: 10px;
+    animation: appear 0.5s;
+    animation-timing-function: cubic-bezier(.57,-0.3,.36,1.2);
+    transform: scale(0);
+    animation-fill-mode: both;
     @include desktop-only{
         margin-bottom: 20px;
     }
@@ -254,6 +258,34 @@ header{
         }
     } 
 }
+
+// Animation d'apparition des "cards" pour les menus
+@keyframes appear{
+    0%{
+        transform: scale(0);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+
+// delais d'apparition des "cards" pour les menus
+.delay1{
+    animation-delay: 0.1s;
+}
+
+.delay2{
+    animation-delay: 0.3s;
+}
+
+.delay3{
+    animation-delay: 0.6s;
+}
+
+.delay4{
+    animation-delay: 0.9s;
+}
+
 
 .entree__body, .dish__body, .dessert__body{
     width: 100%;
