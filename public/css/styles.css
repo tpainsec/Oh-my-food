@@ -132,7 +132,7 @@ header img {
 }
 .presentation__title {
   text-align: center;
-  background-color: #f7f5f5;
+  background-color: #f5f5f5;
 }
 .presentation__title h2 {
   font-weight: bold;
@@ -159,7 +159,7 @@ header img {
 .presentation__button {
   display: flex;
   justify-content: center;
-  background-color: #f7f5f5;
+  background-color: #f5f5f5;
 }
 .presentation__button button {
   background-color: #FF79DA;
@@ -219,7 +219,7 @@ header img {
   width: 100%;
   border-radius: 18px;
   border: unset;
-  background-color: #f7f5f5;
+  background-color: #f5f5f5;
   font-weight: bold;
   font-size: 15px;
   display: flex;
@@ -240,7 +240,7 @@ header img {
 
 .restaurant {
   margin-top: 40px;
-  background-color: #f7f5f5;
+  background-color: #f5f5f5;
   padding: 40px 0;
 }
 @media screen and (min-width: 992px) {
