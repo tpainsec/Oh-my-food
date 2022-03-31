@@ -1,20 +1,46 @@
+// Map des couleurs répétées sur le site
+
 $colours: (
     violet: #9356DC,
     rose: #FF79DA,
     vert: #99E2D0,
     grey: #dfdfdf,
-    lightgrey: #f5f5f5
+    lightgrey: #f6f6f6
 );
+
+// Map des breakpoints pour les media queries
 
 $breakpoints: (
     tablette: 768px,
     desktop: 992px
 );
 
+// Mixin pour centrer horizontalement
+
 @mixin flex-center{
     display: flex;
     justify-content: center;
 }
+
+// Mixin pour les boutons commander de chaque restaurant 
+
+@mixin button{
+    background-image: linear-gradient(170deg, map-get($colours, rose), map-get($colours, violet));
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 25px;
+    height: 40px;
+    box-shadow: 0 0 5px #9e7091;
+    border: 0;
+    transition-duration: 0.6s;
+    &:hover{
+        box-shadow: 0 0 5px #350f2a;
+        background-color: white;
+    }
+}
+
+// Mixin pour le format tablette
 
 @mixin tablette-only {
     @media screen and (min-width: map-get($breakpoints, tablette)) and (max-width: map-get($breakpoints, desktop)) {
@@ -22,11 +48,15 @@ $breakpoints: (
     }
 }
 
+// Mixin pour le format desktop
+
 @mixin desktop-only {
     @media screen and (min-width: map-get($breakpoints, desktop)){
         @content;
     }
 }
+
+// Règles appliquées à toute la page
 
 body{
     margin: 0;
@@ -52,6 +82,8 @@ h2, h3, p, li, button{
     font-family: 'Roboto', sans-serif;
     margin: 0;
 }
+
+// Header présent sur toutes les pages
 
 header{
     @include flex-center;
@@ -87,26 +119,28 @@ header{
     }
 }
 
+// Image d'un plat du restaurant
+
 .image{
     overflow: hidden;
     @include flex-center;
     align-items: center;
-    min-height: 200px;
+    max-height: 450px;
     @include desktop-only{
         height: 100%;
         width: 100%;
     }
     img{
-        min-height: 230px;
-        min-width: 350px;
-        max-width: 100%;
-        max-height: 400px;
+        min-height: 400px;
+        min-width: 100%;       
         @include desktop-only{
             height: 100%;
             width: 100%;
         }
     }
 }
+
+// Keyframe pour le remplissage du coeur 
 
 @keyframes fill{
     0%{
@@ -126,6 +160,9 @@ header{
     @include desktop-only{
         border-radius: 0px;
     }
+
+    // Nom du restaurant
+
     &__title{
         display: flex;
         justify-content: space-between;
@@ -143,6 +180,9 @@ header{
         }
         .fa-heart{
             font-size: 22px;
+
+            // Remplissage du coeur au survol de la souris 
+
             &:hover{
                 animation: fill 1s ease-out;
                 background: linear-gradient(map-get($colours, violet), map-get($colours, rose));
@@ -152,7 +192,10 @@ header{
             }
         }
     }
-    &__presentation{
+
+    // Mise en page des parties entrées, plats et desserts
+
+    &__presentation{ 
         @include desktop-only{
             display: flex; 
             justify-content: space-between;
@@ -180,26 +223,25 @@ header{
             margin: 0;
         }
     }
-    &__button{
+
+    // Bouton commander en bas de page
+
+    &__button{  
         @include flex-center;
         button{
+            @include button;
             margin: 30px 0 0 0;
             width: 50%;
-            padding: 10px 0;
-            border-radius: 25px;
-            border: unset;
-            box-shadow: 0 5px 10px #7e2e67;
             background-color: map-get($colours, rose);
-            color: white;
-            font-weight: bold;
             font-size: 14px;
-            background-image:linear-gradient(170deg,map-get($colours,rose),map-get($colours,violet));
             @include desktop-only{
                 max-width: 30%;
             }
         }
     }
 }
+
+// Titre des différentes parties
 
 .entree__title, .dish__title, .dessert__title{
     h2{
@@ -209,6 +251,9 @@ header{
         @include desktop-only{
             margin: 0 0 20px 0;
         }
+
+        // Pseudosélecteur :after pour créer le soulignement du titre 
+        
         &:after{
             content: "";
             display: block;
@@ -231,35 +276,38 @@ header{
     }
 }
 
+// Cards des entrées, plats et dessers
+
 .entree__card, .dish__card, .dessert__card{
     width: 100%;
     height: 60px;
     border-radius: 10px;
-    box-shadow: 0 5px 10px rgb(184, 184, 184); 
+    box-shadow: 0 5px 10px rgb(231, 231, 231); 
     display: flex;
     overflow: hidden;
     margin-bottom: 10px;
-    animation: appear 0.5s;
+    animation: appear 0.6s;
     animation-timing-function: cubic-bezier(.57,-0.3,.36,1.2);
     transform: scale(0);
     animation-fill-mode: both;
     @include desktop-only{
         margin-bottom: 20px;
     }
+
+    // Animations au survol des cards entrées, plats et desserts
+
     &:hover{
-        .entree__check, .dish__check, .dessert__check{
-            width: 25%;
+        .entree__confirmation, .dish__confirmation, .dessert__confirmation{
+            width: 30%;
         }
-        .entree__body, .dish__body, .dessert__body{
-            text-overflow: clip ellipsis;
-        }
-        i{
+        .fa-circle-check{
             transform: rotate(0deg);
         }
     } 
 }
 
-// Animation d'apparition des "cards" pour les menus
+// Keyframe de l'animation d'appariton des cards au chargement de la page menu
+
 @keyframes appear{
     0%{
         transform: scale(0);
@@ -269,28 +317,30 @@ header{
     }
 }
 
-// delais d'apparition des "cards" pour les menus
+// Délais en fonction de l'ordre des cards 
+
 .delay1{
-    animation-delay: 0.1s;
+    animation-delay: 0.2s;
 }
 
 .delay2{
-    animation-delay: 0.3s;
+    animation-delay: 0.5s;
 }
 
 .delay3{
-    animation-delay: 0.6s;
+    animation-delay: 0.7s;
 }
 
 .delay4{
-    animation-delay: 0.9s;
+    animation-delay: 1s;
 }
 
+// Corps de la card contenant le titre et la description 
 
 .entree__body, .dish__body, .dessert__body{
     width: 100%;
     height: 60px;
-    padding: 6px 10px;
+    padding: 6px 12px;
     border-radius: 10px 0 0 10px;
     box-sizing: border-box;
     background-color: white;
@@ -299,41 +349,59 @@ header{
     overflow: hidden;
 }
 
-.entree__check, .dish__check, .dessert__check{
-    width: 0px;
-    overflow: hidden;
-    transition: width 500ms;
-    background-color: map-get($colours, vert);
-    border-radius: 0 10px 10px 0;
-    @include flex-center;
-    align-items: center;
-    i{
-        font-size: 20px;
-        transform: rotate(210deg);
-        transition: transform 500ms;
-        color: white;
-    }
-}
+// Titre de l'entrée, plat ou dessert
 
 .card__title{
     font-weight: bold;
-    font-size: 16px;
+    font-size: 18px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
+
+// Description de l'entrée, plat ou dessert
 
 .card__description{
     color: rgb(88, 88, 88);
-    font-size: 14px;
-    margin-top: 8px;
+    font-size: 15px;
+    margin-top: 5px;
     margin-bottom: 0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+// Prix de l'entrée, plat ou dessert
+
+.entree__price, .dish__price, .dessert__price{
+    font-weight: bold;
     display: flex;
-    justify-content: space-between;
-    span{
-        margin-left: 10%;
-        font-size: 15px;
-        font-weight: bold;
-        color: black;
+    justify-content: flex-end;
+    align-items: flex-end;
+    background-color: white;
+    padding: 0 12px 8px 0;
+
+}
+
+// Check de validation au survol de la souris sur la card 
+
+.entree__confirmation, .dish__confirmation, .dessert__confirmation{
+    background-color: map-get($colours, vert);
+    width: 0%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow: hidden;
+    transition-duration: 0.6s;
+    .fa-circle-check{
+        color: white;
+        font-size: 22px;
+        transform: rotate(180deg);
+        transition-duration: 0.6s;
     }
 }
+
+// Footer avec ses liens 
 
 footer{
     background-color: #3B3B3B;
