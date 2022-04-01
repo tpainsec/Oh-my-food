@@ -73,15 +73,17 @@ a{
     color: black;
 }
 
-h1{
+h1, h2{
     font-family: 'Shrikhand', cursive;
     margin: 0;
 }
 
-h2, h3, p, li, button{
+h3, p, li, button{
     font-family: 'Roboto', sans-serif;
     margin: 0;
 }
+
+// Loading spinner au chargement de la page
 
 .loader{
     position: fixed;
@@ -98,12 +100,12 @@ h2, h3, p, li, button{
     align-items:center;
     justify-content:center;
     &__item{
-      height: 15px;
-      width: 15px;
+      height: 18px;
+      width: 18px;
       animation: 2s rotation;
       &Container{
         display: flex;
-        width: 5rem;
+        width: 80px;
         justify-content: space-between;
       }
       &--1{
@@ -120,12 +122,16 @@ h2, h3, p, li, button{
     }
 }
 
+// Keyframe de l'apparition de la div qui recouvre entièrement l'écran 
+
 @keyframes loader{
     100%{
       opacity: 0;
       z-index: -1;
     }
 } 
+
+// Keyframe pour la rotation des carrés qui forment le spinner
 
 @keyframes rotation{
     0%{
@@ -144,6 +150,8 @@ h2, h3, p, li, button{
         transform: rotate(360deg);
     }
 }
+
+// Header avec le logo Ohmyfood
 
 header{
     @include flex-center;
@@ -164,7 +172,12 @@ header{
     }
 }
 
+// Presentation de l'entreprise Ohmyfood
+
 .presentation{
+
+    // Localisation des restaurants
+
     &__location{
         @include flex-center;
         align-items: center;
@@ -183,10 +196,13 @@ header{
             font-weight: 700;
         } 
     }
+
+    // Courte présentation de l'entreprise
+
     &__title{
         text-align: center;
         background-color: map-get($colours, lightgrey);
-       h2{
+       h3{
             font-weight: bold;
             font-size: 22px;
             margin: 0 15%;
@@ -205,6 +221,9 @@ header{
             } 
        }
     }
+
+    // Bouton pour découvrir les restaurants
+
     &__button{
         @include flex-center;
         background-color: map-get($colours, lightgrey);
@@ -212,6 +231,9 @@ header{
             @include button;
             margin: 20px 0 40px 0;
             min-width: 50%;
+            @include tablette-only{
+                min-width: 30%;
+            }
             @include desktop-only{
                 min-width: 22%;
                 height: 50px;
@@ -220,11 +242,17 @@ header{
     }
 }
 
+// Menu avec les boutons pour choisir un restaurant, composer son menu
+
 .menu{
-    h2{
+    h3{
         margin: 40px 20px 20px 20px;
+        font-size: 22px;
     }
     &__buttons{
+        @include tablette-only{
+            display: flex;
+        }
         @include desktop-only{
             display: flex;
         }
@@ -233,10 +261,16 @@ header{
         display: flex;
         align-items: center;
         margin: 0 20px 15px 10px;
+        @include tablette-only{
+            width: 30%;
+        }
         @include desktop-only{
             width: 30%;
         }
     }
+
+    // Numéro à coté du bouton 
+
     &__number{
         @include flex-center;
         align-items: center;
@@ -252,11 +286,14 @@ header{
         position: relative;
         right: -10px;
     }
+
+    // Bouton qui au survol devient légèrement violet et ses icones complétement
+
     button{
         height: 70px;
         width: 100%;
         border-radius: 18px;
-        border: unset;
+        border: 0;
         background-color: map-get($colours, lightgrey);
         font-weight: bold;
         font-size: 15px;
@@ -277,6 +314,8 @@ header{
     } 
 }
 
+// Partie comprenant les cards des restaurants
+
 .restaurant{
     margin-top: 40px;
     background-color: map-get($colours, lightgrey);
@@ -284,13 +323,25 @@ header{
     @include desktop-only{
         padding: 35px 0;
     }
-    h2{
+    h3{
         margin: 0px 20px 20px 20px;
+        font-size: 22px;
         @include desktop-only{
             margin: 0 35px 20px 35px;
         }
     }
+
+    // Disposition des cards sur la page
+
     &__cards{
+        @include tablette-only{
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            a{
+                width: 49%;
+            }
+        }
         @include desktop-only{
             display: flex;
             justify-content: space-between;
@@ -303,6 +354,9 @@ header{
             }
         } 
     }
+
+    // Le corps de la card du restaurant
+
     &__card{
         margin: 0 20px 15px 20px;
         min-width: 230px;
@@ -315,6 +369,9 @@ header{
             margin: 0;
         }
     }
+
+    // Image d'un plat du restaurant
+
     &__image{
         position: relative;
         overflow: hidden;
@@ -332,6 +389,9 @@ header{
             transition-timing-function: ease; 
         }
     }
+
+    // Bouton 'Nouveau' dans le coin en haut à droite des cards des derniers restaurants 
+
     &__new{
         position: relative;
         display: flex; 
@@ -346,6 +406,9 @@ header{
             border-radius: 3px; 
         }
     }
+
+    // Description du restaurant
+
     &__desc{
         display: flex;
         justify-content: space-between;
@@ -359,6 +422,9 @@ header{
         padding-top: 15px;
         width: 80%;
     }
+
+    // Nom du restaurant
+
     &__title{
         margin: 0px 10px 5px 10px;
         font-weight: bold;
@@ -367,6 +433,9 @@ header{
             margin: 0;
         }
     }
+
+    // Lieu du restaurant
+
     &__location{
         margin: 0 10px 15px 10px;
         font-size: 16px;
@@ -375,6 +444,9 @@ header{
             margin: 0;
         }
     }
+
+    // Le coeur qui se remplit au survol de celui-ci 
+
     &__heart{
         width: 20%;
         display: flex;
@@ -394,6 +466,8 @@ header{
     }
 }
 
+// Keyframe de l'animation de remplissage du coeur 
+
 @keyframes fill{
     0%{
         opacity:0;
@@ -402,6 +476,8 @@ header{
         opacity:1;
     }
 }
+
+// Footer avec ses liens
 
 footer{
     background-color: #3B3B3B;
